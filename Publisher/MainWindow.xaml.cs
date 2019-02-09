@@ -20,6 +20,8 @@ namespace Publisher
             InitializeComponent();
 
             ButtonDisconnect.IsEnabled = false;
+            ButtonPublish.IsEnabled = false;
+            ButtonDelete.IsEnabled = false;
         }
 
         private void ButtonConnect_Click(object sender, RoutedEventArgs e)
@@ -33,17 +35,36 @@ namespace Publisher
                 rabbitMqConnection = rabbitMqFactory.CreateConnection();
                 rabbitMqChannel = rabbitMqConnection.CreateModel();
 
+                // Create an exchange of type "topic"
                 rabbitMqChannel.ExchangeDeclare(exchange: exchange,
-                                                type: "direct",
+                                                type: "topic",
                                                 durable: false);
 
                 ButtonConnect.IsEnabled = false;
                 ButtonDisconnect.IsEnabled = true;
+                ButtonDelete.IsEnabled = true;
+                ButtonPublish.IsEnabled = true;
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Error: " + ex.Message, "Error");
             }
+        }
+
+        private void ButtonPublish_Click(object sender, RoutedEventArgs e)
+        {
+            string routingKey = TextBoxRoutingKey.Text;
+            var body = Encoding.UTF8.GetBytes(TextBoxMessage.Text);
+
+            rabbitMqChannel.BasicPublish(exchange: exchange,
+                                         routingKey: routingKey,
+                                         basicProperties: null,
+                                         body: body);
+        }
+
+        private void ButtonDelete_Click(object sender, RoutedEventArgs e)
+        {
+            rabbitMqChannel.ExchangeDelete(exchange);
         }
 
         private void ButtonDisconnect_Click(object sender, RoutedEventArgs e)
@@ -57,17 +78,8 @@ namespace Publisher
 
             ButtonConnect.IsEnabled = true;
             ButtonDisconnect.IsEnabled = false;
-        }
-
-        private void ButtonPublish_Click(object sender, RoutedEventArgs e)
-        {
-            string routingKey = TextBoxRoutingKey.Text;
-            var body = Encoding.UTF8.GetBytes(TextBoxMessage.Text);
-
-            rabbitMqChannel.BasicPublish(exchange: exchange,
-                                         routingKey: routingKey,
-                                         basicProperties: null,
-                                         body: body);
+            ButtonPublish.IsEnabled = false;
+            ButtonDelete.IsEnabled = false;
         }
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)

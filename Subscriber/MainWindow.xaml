@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Subscriber"
         mc:Ignorable="d"
-        Title="RabbitMQ Subscriber" Height="445.557" Width="750.494" Closing="Window_Closing">
+        Title="RabbitMQ subscriber using a topic exchange" Height="445.557" Width="750.494" Closing="Window_Closing">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
@@ -19,14 +19,14 @@
         <Button x:Name="ButtonConnect" Content="Connect" Margin="0,13,100,0" VerticalAlignment="Top" Click="ButtonConnect_Click" HorizontalAlignment="Right" Width="75"/>
         <Button x:Name="ButtonDisconnect" Content="Disconnect" Margin="0,13,15,0" VerticalAlignment="Top" Click="ButtonDisconnect_Click" RenderTransformOrigin="3.479,0.394" HorizontalAlignment="Right" Width="75"/>
 
-        <Label Content="Exchange:" HorizontalAlignment="Left" Margin="15,10,0,0" Grid.Row="1" VerticalAlignment="Top"/>
+        <Label Content="Exchange name:" HorizontalAlignment="Left" Margin="15,10,0,0" Grid.Row="1" VerticalAlignment="Top"/>
         <TextBox x:Name="TextBoxExchange" HorizontalAlignment="Left" Height="23" Margin="113,14,0,0" Grid.Row="1" TextWrapping="NoWrap" Text="configuration" VerticalAlignment="Top" Width="156"/>
-        <Label Content="Routing key:" HorizontalAlignment="Left" Margin="280,10,0,0" Grid.Row="1" VerticalAlignment="Top"/>
-        <TextBox x:Name="TextBoxRoutingKey" HorizontalAlignment="Left" Height="23" Margin="360,14,0,0" Grid.Row="1" TextWrapping="NoWrap" Text="queues.chat" VerticalAlignment="Top" Width="156"/>
+        <Label Content="Binding key:" HorizontalAlignment="Left" Margin="280,10,0,0" Grid.Row="1" VerticalAlignment="Top"/>
+        <TextBox x:Name="TextBoxBindingKey" HorizontalAlignment="Left" Height="23" Margin="360,14,0,0" Grid.Row="1" TextWrapping="NoWrap" Text="queues.chat" VerticalAlignment="Top" Width="156"/>
 
         <Label Content="Received messages:" HorizontalAlignment="Left" Margin="15,5,0,0" Grid.Row="2" VerticalAlignment="Top"/>
         <ListBox x:Name="ListBoxMessages" Margin="15,0,74,10" Grid.Row="3"/>
-        <Button x:Name="ButtonClear" Content="Clear" Margin="0,10,15,0" Grid.Row="2" VerticalAlignment="Top" HorizontalAlignment="Right" Width="49" Click="ButtonClear_Click"/>
+        <Button x:Name="ButtonClear" Content="Clear" Margin="0,0,15,0" Grid.Row="3" VerticalAlignment="Top" HorizontalAlignment="Right" Width="49" Click="ButtonClear_Click"/>
 
     </Grid>
 </Window>

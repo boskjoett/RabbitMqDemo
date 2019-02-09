@@ -5,9 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Publisher"
         mc:Ignorable="d"
-        Title="RabbitMQ Publisher" Height="406.206" Width="666.714" Closing="Window_Closing">
+        Title="RabbitMQ publisher using a topic exchange" Height="198.806" Width="533.795" Closing="Window_Closing">
     <Grid>
         <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
@@ -15,17 +16,19 @@
         </Grid.RowDefinitions>
 
         <Label Content="RabbitMQ host:" HorizontalAlignment="Left" Margin="15,10,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="TextBoxHost" HorizontalAlignment="Left" Height="23" Margin="113,14,0,0" TextWrapping="NoWrap" Text="dockerlin" VerticalAlignment="Top" Width="156"/>
+        <TextBox x:Name="TextBoxHost" Height="23" Margin="113,14,196,0" TextWrapping="NoWrap" Text="dockerlin" VerticalAlignment="Top"/>
         <Button x:Name="ButtonConnect" Content="Connect" Margin="0,14,95,0" VerticalAlignment="Top" Click="ButtonConnect_Click" HorizontalAlignment="Right" Width="75"/>
         <Button x:Name="ButtonDisconnect" Content="Disconnect" Margin="0,14,10,0" VerticalAlignment="Top" Click="ButtonDisconnect_Click" HorizontalAlignment="Right" Width="75"/>
 
-        <Label Content="Exchange:" HorizontalAlignment="Left" Margin="15,10,0,0" Grid.Row="1" VerticalAlignment="Top"/>
-        <TextBox x:Name="TextBoxExchange" HorizontalAlignment="Left" Height="23" Margin="113,14,0,0" Grid.Row="1" TextWrapping="NoWrap" Text="configuration" VerticalAlignment="Top" Width="156"/>
-        <Label Content="Routing key:" HorizontalAlignment="Left" Margin="280,10,0,0" Grid.Row="1" VerticalAlignment="Top"/>
-        <TextBox x:Name="TextBoxRoutingKey" HorizontalAlignment="Left" Height="23" Margin="360,14,0,0" Grid.Row="1" TextWrapping="NoWrap" Text="queues.chat" VerticalAlignment="Top" Width="156"/>
+        <Label Content="Exchange name:" HorizontalAlignment="Left" Margin="15,10,0,0" Grid.Row="1" VerticalAlignment="Top"/>
+        <TextBox x:Name="TextBoxExchange" Height="23" Margin="113,14,196,0" Grid.Row="1" TextWrapping="NoWrap" Text="configuration" VerticalAlignment="Top"/>
+        <Button x:Name="ButtonDelete" Content="Delete" Margin="0,14,10,0" Grid.Row="1" VerticalAlignment="Top" Click="ButtonDelete_Click" HorizontalAlignment="Right" Width="75"/>
 
-        <Label Content="Message:" HorizontalAlignment="Left" Margin="15,10,0,0" Grid.Row="2" VerticalAlignment="Top"/>
-        <TextBox x:Name="TextBoxMessage" HorizontalAlignment="Left" Height="23" Margin="113,14,0,0" Grid.Row="2" TextWrapping="NoWrap" Text="Hello" VerticalAlignment="Top" Width="156"/>
-        <Button x:Name="ButtonPublish" Content="Publish" HorizontalAlignment="Left" Margin="294,14,0,0" Grid.Row="2" VerticalAlignment="Top" Width="75" Click="ButtonPublish_Click"/>
+        <Label Content="Routing key:" HorizontalAlignment="Left" Margin="15,10,0,0" Grid.Row="2" VerticalAlignment="Top"/>
+        <TextBox x:Name="TextBoxRoutingKey" Height="23" Margin="113,14,196,0" Grid.Row="2" TextWrapping="NoWrap" Text="queues.chat" VerticalAlignment="Top"/>
+
+        <Label Content="Message:" HorizontalAlignment="Left" Margin="15,10,0,0" Grid.Row="3" VerticalAlignment="Top"/>
+        <TextBox x:Name="TextBoxMessage" Height="23" Margin="113,14,196,0" Grid.Row="3" TextWrapping="NoWrap" Text="Hello" VerticalAlignment="Top"/>
+        <Button x:Name="ButtonPublish" Content="Publish" Margin="0,14,10,0" Grid.Row="3" VerticalAlignment="Top" Click="ButtonPublish_Click" IsDefault="True" HorizontalAlignment="Right" Width="75"/>
     </Grid>
 </Window>
